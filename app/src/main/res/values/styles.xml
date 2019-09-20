@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ed_white">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/card_white_editext</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="UIButton">
+        <item name="android:textColor">@drawable/button_selector_text_inverse</item>
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:minHeight">45dp</item>
+        <item name="android:minWidth">70dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+    </style>
+
+</resources>

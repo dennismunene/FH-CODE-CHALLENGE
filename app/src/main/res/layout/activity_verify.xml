@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_300"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/uniform_padding">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+
+                    android:text="Verify Phone Number"
+                    android:textColor="@color/white"
+                    android:textSize="34sp" />
+
+                <TextView
+                    android:id="@+id/tvverificationcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/medium_pad"
+
+
+                    android:text="Please enter code sent to your phone"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/colorPrimary"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/layer_card_background"
+                    android:orientation="vertical"
+                    android:padding="@dimen/uniform_padding">
+
+                    <EditText
+                        android:id="@+id/edPhone"
+                        style="@style/ed_white"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:ems="10"
+                        android:gravity="center"
+
+                        android:hint="___  ___  ___  ___"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:padding="@dimen/medium_pad" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/medium_pad"
+
+
+                        android:padding="@dimen/medium_pad"
+                        android:gravity="center"
+                        android:text="Please wait for a few minutes to receive verification code on SMS"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        style="@style/UIButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/uniform_padding"
+                        android:text="Next"
+
+
+                        />
+
+                    <Button
+                        android:id="@+id/btnResendCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+
+                        android:padding="@dimen/medium_pad"
+
+                        android:textColor="@color/colorPrimary"
+                        android:text="Did not receive code? RESEND"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
