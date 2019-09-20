@@ -210,13 +210,16 @@ public class AddChildActivity extends AppCompatActivity {
                         realm.insertOrUpdate(child);
 
                         if(selectedSponsor!=null){
-                            realm.insertOrUpdate(program);
+                            //TODO work on this
+                           // realm.insertOrUpdate(program);
                         }
                     }else {
                         realm.insert(child);
 
                         if(selectedSponsor!=null){
-                            realm.insert(program);
+                            //TODO work on this
+
+                           // realm.insert(program);
                         }
                     }
 
