@@ -16,6 +16,7 @@ import com.dmk.fh.org.adapter.SponsorAutoCompleteAdapter;
 import com.dmk.fh.org.adapter.SponsorListAdapter;
 import com.dmk.fh.org.model.Child;
 import com.dmk.fh.org.model.Sponsor;
+import com.dmk.fh.org.model.SponsorshipProgram;
 import com.hbb20.CountryCodePicker;
 
 import java.util.Date;
@@ -29,6 +30,7 @@ import io.realm.SyncUser;
 public class AddChildActivity extends AppCompatActivity {
 
 
+    private static final int CFCT_ID = 1001;
     private AppCompatEditText edName, edAge, edNotes;
     private Spinner spGender;
     private CountryCodePicker ccp;
@@ -41,6 +43,8 @@ public class AddChildActivity extends AppCompatActivity {
 
     private Realm realm;
     Child childExtra;
+
+    private Sponsor selectedSponsor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,6 +64,17 @@ public class AddChildActivity extends AppCompatActivity {
         });
 
         edAutoComplete = findViewById(R.id.edAutoComplete);
+        edAutoComplete.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedSponsor = (Sponsor) edAutoComplete.getAdapter().getItem(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         spGender = findViewById(R.id.spGender);
@@ -157,8 +172,9 @@ public class AddChildActivity extends AppCompatActivity {
 
             String userId = SyncUser.current().getIdentity();
 
+            int childID= new Random().nextInt();
             Child child = new Child();
-            child.setId(new Random().nextInt());
+            child.setId(childID);
 
             child.setName(name);
             child.setAge(Integer.parseInt(age));
@@ -168,6 +184,22 @@ public class AddChildActivity extends AppCompatActivity {
             child.setDateCreated(new Date());
             child.setCreatedBy(userId);
             child.setNotes(notes);
+            if(selectedSponsor!=null)
+            child.setCurrentSponsor(selectedSponsor.getId());
+
+
+            SponsorshipProgram program = new SponsorshipProgram();
+            program.setId(CFCT_ID);
+            program.setAmount(38);
+            program.setPeriod(30);
+            program.setChildID(childID);
+
+            if(selectedSponsor!=null)
+            program.setSponsorID(selectedSponsor.getId());
+
+            program.setDateStarted(new Date());
+
+
 
             realm = Realm.getDefaultInstance();
             realm.executeTransactionAsync(new Realm.Transaction() {
@@ -176,8 +208,20 @@ public class AddChildActivity extends AppCompatActivity {
 
                         //we are updating data
                         realm.insertOrUpdate(child);
-                    }else
-                    realm.insert(child);
+
+                        if(selectedSponsor!=null){
+                            realm.insertOrUpdate(program);
+                        }
+                    }else {
+                        realm.insert(child);
+
+                        if(selectedSponsor!=null){
+                            realm.insert(program);
+                        }
+                    }
+
+
+
                 }
             });
 

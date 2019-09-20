@@ -38,6 +38,16 @@ public class Child extends RealmObject implements Parcelable {
     private Date dateCreated;
     private Date dateUpdated;
 
+    public int getCurrentSponsor() {
+        return currentSponsor;
+    }
+
+    public void setCurrentSponsor(int currentSponsor) {
+        this.currentSponsor = currentSponsor;
+    }
+
+    private int currentSponsor;
+
     public Child(){}
     public Child(Parcel in) {
         id = in.readInt();

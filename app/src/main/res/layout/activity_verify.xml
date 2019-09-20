@@ -36,7 +36,7 @@
                     android:layout_marginTop="@dimen/medium_pad"
 
 
-                    android:text="Please enter code sent to your phone"
+                    android:text="Please enter code sent to your email"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
             </LinearLayout>
